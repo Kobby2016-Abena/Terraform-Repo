@@ -1,5 +1,5 @@
 resource "aws_vpc" "Prod-rock-VPC" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.cidr_block
   instance_tenancy = "default"
 
   tags = {
@@ -9,7 +9,7 @@ resource "aws_vpc" "Prod-rock-VPC" {
 
 resource "aws_subnet" "Test-public-sub1" {
   vpc_id     = aws_vpc.Prod-rock-VPC.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.Public-Subnet-1-cidr_block
 
   tags = {
     Name = "Test-public-sub1"
@@ -18,7 +18,7 @@ resource "aws_subnet" "Test-public-sub1" {
 
 resource "aws_subnet" "Test-public-sub2" {
   vpc_id     = aws_vpc.Prod-rock-VPC.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.Public-Subnet-2-cidr_block
 
   tags = {
     Name = "Test-public-sub2"
@@ -27,7 +27,7 @@ resource "aws_subnet" "Test-public-sub2" {
 
 resource "aws_subnet" "Test-private-sub1" {
   vpc_id     = aws_vpc.Prod-rock-VPC.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = var.Private-Subnet-1-cidr_block
 
   tags = {
     Name = "Test-private-sub1"
@@ -37,7 +37,7 @@ resource "aws_subnet" "Test-private-sub1" {
 
 resource "aws_subnet" "Test-private-sub2" {
   vpc_id     = aws_vpc.Prod-rock-VPC.id
-  cidr_block = "10.0.4.0/24"
+  cidr_block = var.Private-Subnet-2-cidr_block
 
   tags = {
     Name = "Test-private-sub2"
